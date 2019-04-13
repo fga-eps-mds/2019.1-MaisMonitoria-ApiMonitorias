@@ -1,15 +1,26 @@
 version: '3'
 
 services:
-
+  db:
+    container_name: db
+    restart: always
+    image: postgres
+    environment:
+      - POSTGRES_NAME=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+    ports:
+      - "5432:5432"
   api_monitoria:
     container_name: api_monitoria
     build: .
     command: /bin/bash -l -c '
               python3 manage.py makemigrations && 
               python3 manage.py migrate --noinput && 
-              python3 manage.py runserver 0.0.0.0:8000'
+              python3 manage.py runserver 0.0.0.0:8001'
     volumes:
       - .:/code
     ports:
       - "8001:8001"
+    depends_on:
+      - db
