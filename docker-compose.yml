@@ -15,9 +15,9 @@ services:
     container_name: api_monitoria
     build: .
     command: /bin/bash -l -c '
-              python3 manage.py makemigrations && 
-              python3 manage.py migrate --noinput && 
-              python3 manage.py runserver 0.0.0.0:8001'
+              python manage.py makemigrations && 
+              python manage.py migrate --noinput && 
+              python manage.py runserver 0.0.0.0:8001'
     volumes:
       - .:/code
     ports:
