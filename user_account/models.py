@@ -5,7 +5,6 @@ from django.db import models
 
 # Create your models here.
 
-
 class User_account(models.Model):
 
     user_account_id = models.AutoField(primary_key=True)
@@ -22,7 +21,7 @@ class User_account(models.Model):
     )
     
     course = models.CharField(max_length=11, choices= COURSES)
-    deion = models.CharField(max_length=500)
+    description = models.CharField(max_length=500)
     registration_date = models.DateTimeField( auto_now_add=True)
     account_state = models.BooleanField(default=True)
 
