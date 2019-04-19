@@ -19,7 +19,7 @@ class User_account(models.Model):
         ('AERO', 'Engenharia Aeroespacial'),
         ('AUTOMOTIVA', 'Engenharia Automotiva'),
         ('ENGENHARIAS', 'Engenharias'),
-    )
+    ) 
     
     # monitoring = models.ManyToManyField(Monitoring)
     # monitoring_history = models.ManyToManyField(Receipt)
