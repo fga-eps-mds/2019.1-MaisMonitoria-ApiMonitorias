@@ -6,4 +6,5 @@ codecov
 coverage
 requests==2.21.0
 requests-mock==1.5.2
-psycopg2
+psycopg2-binary==2.7.5
+django-cors-headers
