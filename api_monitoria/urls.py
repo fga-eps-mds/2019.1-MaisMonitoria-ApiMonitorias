@@ -18,13 +18,9 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
 from user_account.api.viewsets import User_accountViewset
-from monitoring.api.viewsets import MonitoringViewset
-
 
 router = routers.DefaultRouter()
-router.register(r'user', User_accountViewset),
-router.register(r'monitoring', MonitoringViewset)
-
+router.register(r'user', User_accountViewset)
 
 urlpatterns = [
     path('', include(router.urls)),
