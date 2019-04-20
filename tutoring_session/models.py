@@ -16,6 +16,8 @@ class TutoringSession(models.Model):
     #accepted_applicants = models.ManyToManyField(Solicitation)
     status_tutoring_session = models.BooleanField(default=True)
     create_date = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        ordering = ('id_tutoring_session', 'name', 'subject', 'description', 'status_tutoring_session', 'create_date')
 
 class Receipt(models.Model):
     id_receipt = models.AutoField(primary_key=True)

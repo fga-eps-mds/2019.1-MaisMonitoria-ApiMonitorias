@@ -6,7 +6,7 @@ class UserAccountSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = UserAccount
         fields = ['user_account_id', 'name', 'email', 'registration_date',
-                  'description', 'course', 'account_state', 'photo_url','interest_areas']
+                  'description', 'course', 'account_state', 'photo_url','interest_areas','monitoring','monitoring_history']
 
 class InterestAreaSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
