@@ -13,7 +13,7 @@ tests:
 run-dc-tests:
 	docker network create api-backend 
 	docker-compose -f docker-compose.yml build
-	docker-compose -f docker-compose.yml up -d
+	docker-compose -f docker-compose.yml up
 
 unit-tests:
 	echo "Running Unit Tests"
