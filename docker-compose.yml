@@ -17,10 +17,7 @@ services:
   api_monitoria:
     container_name: api_monitoria
     build: .
-    command: /bin/bash -l -c '
-              python3 manage.py makemigrations && 
-              python3 manage.py migrate --noinput && 
-              python3 manage.py runserver 0.0.0.0:8001'
+    command: sh run-django.sh
     volumes:
       - .:/code
     ports:

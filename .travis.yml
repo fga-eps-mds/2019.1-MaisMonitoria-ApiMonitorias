@@ -24,9 +24,10 @@ jobs:
       name: "Unit test"
       script:
         - make run-dc-tests
+        - docker-compose -f docker-compose.yml up
         - make unit-tests
-        - docker-compose exec api_gateway flake8
-        - docker-compose exec api_gateway codecov -t ${CODECOV_TOKEN}
+        - docker-compose exec api_monitoria flake8
+        - docker-compose exec api_monitoria codecov -t ${CODECOV_TOKEN}
         
 after_success:
   - docker-compose down
