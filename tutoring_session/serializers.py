@@ -11,8 +11,8 @@ class SolicitationSerializer(serializers.HyperlinkedModelSerializer):
 class TutoringSessionSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = TutoringSession
-        fields = ['id_tutoring_session', 'name', 'subject' ,
-                  'description', 'status_tutoring_session', 'create_date']
+        fields = ['monitor_id','id_tutoring_session', 'name', 'subject' ,'applicants',
+                  'description', 'status_tutoring_session', 'create_date','accepted_applicants']
 
 class ReceiptSerializer(serializers.ModelSerializer):
     class Meta:

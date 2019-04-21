@@ -24,8 +24,8 @@ class UserAccount(models.Model):
         ('ENGENHARIAS', 'Engenharias'),
     )
 
-    monitoring = models.ManyToManyField("tutoring_session.TutoringSession")
-    monitoring_history = models.ManyToManyField("tutoring_session.Receipt")
+    monitoring = models.ManyToManyField("tutoring_session.TutoringSession",blank = True)
+    monitoring_history = models.ManyToManyField("tutoring_session.Receipt", blank = True)
     interest_areas = models.ManyToManyField(InterestArea)
 
     course = models.CharField(max_length=11, choices=COURSES)
