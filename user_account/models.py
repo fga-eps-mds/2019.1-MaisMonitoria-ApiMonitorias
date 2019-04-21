@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
-
 from django.db import models
+
 
 # Create your models here.
 class InterestArea(models.Model):
@@ -23,9 +23,9 @@ class UserAccount(models.Model):
         ('AUTOMOTIVA', 'Engenharia Automotiva'),
         ('ENGENHARIAS', 'Engenharias'),
     )
-    
-    # monitoring = models.ManyToManyField(Monitoring)
-    # monitoring_history = models.ManyToManyField(Receipt)
+
+    monitoring = models.ManyToManyField("tutoring_session.TutoringSession",blank = True)
+    monitoring_history = models.ManyToManyField("tutoring_session.Receipt", blank = True)
     interest_areas = models.ManyToManyField(InterestArea)
 
     course = models.CharField(max_length=11, choices=COURSES)
@@ -35,3 +35,5 @@ class UserAccount(models.Model):
 
     # def __str__(self):
     #     return self.name
+
+
