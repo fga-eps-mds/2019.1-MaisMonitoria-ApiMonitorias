@@ -10,12 +10,12 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
     ports:
-      - "5432:5432"
+      - "5433:5432"
     networks:
       - api-backend
     
   api_monitoria:
-    container_name: api_monitoria
+    container_name: api-monitoria
     build: .
     command: sh run-django.sh
     volumes:
@@ -30,4 +30,4 @@ services:
 networks:
   api-backend:
     external:
-      name: api-backend
+      name: api-backend    
