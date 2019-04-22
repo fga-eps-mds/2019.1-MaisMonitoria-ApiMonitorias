@@ -14,8 +14,8 @@ class TutoringSession(models.Model):
     name = models.CharField(max_length=150)
     subject = models.CharField(max_length=200)
     description = models.CharField(max_length=500, default="")
-    applicants = models.ManyToManyField(Solicitation)
-    accepted_applicants = models.ManyToManyField(Solicitation, related_name='applicants')
+    applicants = models.ManyToManyField(Solicitation, blank =True)
+    accepted_applicants = models.ManyToManyField(Solicitation, blank =True, related_name='applicants')
     status_tutoring_session = models.BooleanField(default=True)
     create_date = models.DateTimeField(auto_now_add=True)
     
