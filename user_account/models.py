@@ -26,7 +26,7 @@ class UserAccount(models.Model):
 
     monitoring = models.ManyToManyField("tutoring_session.TutoringSession",blank = True)
     monitoring_history = models.ManyToManyField("tutoring_session.Receipt", blank = True)
-    interest_areas = models.ManyToManyField(InterestArea)
+    interest_areas = models.ManyToManyField(InterestArea, blank = True)
 
     course = models.CharField(max_length=11, choices=COURSES)
     description = models.CharField(max_length=500, default="")
