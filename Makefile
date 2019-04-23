@@ -7,14 +7,6 @@ run-d:
 down:
 	docker-compose -f docker-compose.yml down
 
-run-dc-tests:
-	docker network create api-backend 
-	docker-compose -f docker-compose.yml build
-
 tests:
-	docker exec api_monitoria bash -c "bash run-tests.sh"
-
-unit-tests:
-	echo "Running Unit Tests"
-	docker exec api_monitoria bash -c "bash run-tests.sh"
+	docker-compose exec api_monitoria py.test --cov=.
 	
