@@ -24,6 +24,7 @@ jobs:
       name: "Unit test"
       script:
         - make build
+        - docker network create api-backend
         - make run run-d
         - make tests
         #- make unit-tests
