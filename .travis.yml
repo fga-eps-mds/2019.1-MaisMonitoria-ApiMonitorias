@@ -9,8 +9,8 @@ env:
 stages:
   - Unit test
   
-#notifications:
-#  slack: hora-da-hora:0nFQxr2PykmKhNkJ78xYJMOP
+notifications:
+  slack: hora-da-hora:0nFQxr2PykmKhNkJ78xYJMOP
 
 before_install:
   - sudo rm /usr/local/bin/docker-compose
@@ -23,9 +23,10 @@ jobs:
     - stage: "Unit test"
       name: "Unit test"
       script:
-        - make run-dc-tests
-        - docker-compose -f docker-compose.yml up -d
-        #- make unit-tests
+        - make build
+        - docker network create api-backend
+        - make run-d
+        - make tests
         #- docker-compose exec api_monitoria flake8
         #- docker-compose exec api_monitoria codecov -t ${CODECOV_TOKEN}
         
