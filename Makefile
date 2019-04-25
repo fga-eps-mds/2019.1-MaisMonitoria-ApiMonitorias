@@ -1,6 +1,6 @@
 build:
 	docker-compose -f docker-compose.yml build
-	
+
 run:
 	docker-compose -f docker-compose.yml up
 
@@ -10,6 +10,9 @@ run-d:
 down:
 	docker-compose -f docker-compose.yml down
 
-tests:
-	docker-compose exec api_monitoria py.test --cov=.
+run-tests:
+	docker-compose exec api_monitoria coverage run manage.py test
+
+cov-tests:
+	docker-compose exec api_monitoria coverage report -m
 	
