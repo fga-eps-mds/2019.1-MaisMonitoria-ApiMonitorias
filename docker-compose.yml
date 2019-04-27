@@ -24,7 +24,6 @@ services:
       - .:/code
     ports:
       - "8001:8001"
-    entrypoint: ./wait-for-postgres.sh postgres 5433
     networks:
       - api-backend
 
