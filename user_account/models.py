@@ -4,7 +4,7 @@ from django.db import models
 
 # Create your models here.
 class InterestArea(models.Model):
-    interest_area_id = models.AutoField(primary_key=True)
+    id_interest_area = models.AutoField(primary_key=True)
     name = models.CharField(max_length=150)
 
     
