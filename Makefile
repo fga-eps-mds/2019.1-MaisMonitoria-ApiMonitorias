@@ -5,7 +5,9 @@ run:
 	docker-compose -f docker-compose.yml up
 
 run-d:
-	docker-compose -f docker-compose.yml up -d
+	docker-compose -f docker-compose.yml up -d db
+	sleep 60
+	docker-compose -f docker-compose.yml up -d api_monitoria
 
 down:
 	docker-compose -f docker-compose.yml down
