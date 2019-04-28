@@ -30,6 +30,18 @@ jobs:
         - make cov-tests
         # - docker-compose exec api_monitoria flake8
         - docker-compose exec api_monitoria codecov -t ${CODECOV_TOKEN}
+
+deploy:
+    - provider: script
+      skip_cleanup: true
+      script: bash ./scripts/deploy_prod.sh
+      on:
+        branch: master
+    - provider: script
+      skip_cleanup: true
+      script: bash ./scripts/deploy_homolog.sh
+      on:
+        branch: devel
         
 after_success:
   - docker-compose down
