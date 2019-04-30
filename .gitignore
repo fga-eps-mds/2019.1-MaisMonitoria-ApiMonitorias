@@ -137,5 +137,5 @@ dmypy.json
 
 # vscode
 .vscode/
-
+export.sh
 # End of https://www.gitignore.io/api/django
