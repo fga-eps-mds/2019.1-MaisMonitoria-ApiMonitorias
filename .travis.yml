@@ -34,7 +34,7 @@ jobs:
         - docker-compose exec api_monitoria codecov -t ${CODECOV_TOKEN}
     - stage: "Deploy image homolog"
       if: branch = develop
-      script: bash ./scripts/deploy_prod.sh
+      script: bash ./scripts/deploy_homolog.sh
     - stage: "Deploy image prodution"
       if: branch = master
       script: bash ./scripts/deploy_prod.sh
