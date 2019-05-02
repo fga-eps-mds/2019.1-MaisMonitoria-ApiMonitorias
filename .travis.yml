@@ -1,0 +1,43 @@
+sudo: required
+
+services:
+  - docker
+
+env:
+  - DOCKER_COMPOSE_VERSION=1.22.0
+
+stages:
+  - Unit test
+  - Deploy image homolog
+  - Deploy image prodution
+  
+notifications:
+  slack: hora-da-hora:0nFQxr2PykmKhNkJ78xYJMOP
+
+before_install:
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
+
+jobs:
+  include:
+    - stage: "Unit test"
+      name: "Unit test"
+      script:
+        - make build
+        - docker network create api-backend
+        - make run-d
+        - make run-tests
+        - make cov-tests
+        # - docker-compose exec api_monitoria flake8
+        - docker-compose exec api_monitoria codecov -t ${CODECOV_TOKEN}
+    - stage: "Deploy image homolog"
+      if: branch = develop
+      script: bash ./scripts/deploy_homolog.sh
+    - stage: "Deploy image prodution"
+      if: branch = master
+      script: bash ./scripts/deploy_prod.sh
+    
+after_success:
+  - docker-compose down

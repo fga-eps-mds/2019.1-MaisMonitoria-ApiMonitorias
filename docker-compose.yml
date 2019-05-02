@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  db:
+    container_name: db
+    restart: always
+    image: postgres
+    environment:
+      - POSTGRES_NAME=${POSTGRES_NAME}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - "5433:5432"
+    networks:
+      - api-backend
+    
+  api_monitoria:
+    container_name: api-monitoria
+    depends_on:
+      - db
+    build: .
+    command: sh run-django.sh
+    volumes:
+      - .:/code
+    ports:
+      - "8001:8001"
+    networks:
+      - api-backend
+    environment:
+      - POSTGRES_NAME=${POSTGRES_NAME}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_PORT=${POSTGRES_PORT}
+      - POSTGRES_HOST=${POSTGRES_HOST}
+networks:
+  api-backend:
+    external:
+      name: api-backend    
