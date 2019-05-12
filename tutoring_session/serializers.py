@@ -3,12 +3,12 @@ from tutoring_session.models import Solicitation
 from tutoring_session.models import Receipt
 from rest_framework import serializers
 
-class SolicitationSerializer(serializers.HyperlinkedModelSerializer):
+class SolicitationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Solicitation
         fields = ['status_solicitation', 'resquester', 'create_date']
 
-class TutoringSessionSerializer(serializers.HyperlinkedModelSerializer):
+class TutoringSessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = TutoringSession
         fields = ['monitor','id_tutoring_session', 'name', 'subject' ,'applicants',
