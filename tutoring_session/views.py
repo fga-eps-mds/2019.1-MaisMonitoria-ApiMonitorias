@@ -1,4 +1,5 @@
-from .serializers import TutoringSessionSerializer, SolicitationSerializer, ReceiptSerializer
+from .serializers import GetTutoringSessionSerializer, SolicitationSerializer
+from .serializers import ReceiptSerializer, PostTutoringSessionSerializer
 from tutoring_session.models import TutoringSession, Solicitation, Receipt
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
@@ -11,10 +12,10 @@ class SolicitationViewset(ModelViewSet):
 
 class TutoringSessionViewset(ModelViewSet):
     queryset = TutoringSession.objects.all()
-    serializer_class = TutoringSessionSerializer
+    serializer_class = GetTutoringSessionSerializer
 
     def create(self, request):
-        serializer = self.get_serializer(data=request.data)
+        serializer = PostTutoringSessionSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         self.perform_create(serializer)
         headers = self.get_success_headers(serializer.data)

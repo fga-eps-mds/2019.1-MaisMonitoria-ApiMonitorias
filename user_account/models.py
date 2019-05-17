@@ -1,19 +1,13 @@
 from __future__ import unicode_literals
 from django.db import models
 
-
-# Create your models here.
-class InterestArea(models.Model):
-    id_interest_area = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=150)
-
     
 class UserAccount(models.Model):
 
     user_account_id = models.CharField(max_length=30, primary_key=True)
     name = models.CharField(max_length=150)
     email = models.CharField(max_length=250)
-    photo_url = models.CharField(max_length=150, default="")
+    photo = models.ImageField(upload_to='images', blank=True)
 
     COURSES = (
         ('SOFTWARE', 'Engenharia de Software'),
@@ -26,7 +20,6 @@ class UserAccount(models.Model):
 
     monitoring = models.ManyToManyField("tutoring_session.TutoringSession", blank=True)
     monitoring_history = models.ManyToManyField("tutoring_session.Receipt", blank=True)
-    interest_areas = models.ManyToManyField(InterestArea, blank=True)
 
     course = models.CharField(max_length=11, choices=COURSES)
     description = models.CharField(max_length=500, default="")
