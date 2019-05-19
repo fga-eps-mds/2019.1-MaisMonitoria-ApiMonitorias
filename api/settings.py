@@ -130,4 +130,4 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), '2019.1-MaisMonitoria-ApiMonitorias')
+MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media')
