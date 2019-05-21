@@ -5,14 +5,19 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from user_account.models import UserAccount
 from rest_framework import status
+from rest_framework.filters import SearchFilter
+
 
 class SolicitationViewset(ModelViewSet):
     queryset = Solicitation.objects.all()
     serializer_class = SolicitationSerializer
 
+
 class TutoringSessionViewset(ModelViewSet):
     queryset = TutoringSession.objects.all()
     serializer_class = GetTutoringSessionSerializer
+    filter_backends = (SearchFilter,)
+    search_fields = ('name', 'subject','description')
 
     def create(self, request):
         serializer = PostTutoringSessionSerializer(data=request.data)
@@ -25,6 +30,8 @@ class TutoringSessionViewset(ModelViewSet):
 
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
+
 class ReceiptViewset(ModelViewSet):
     queryset = Receipt.objects.all()
     serializer_class = ReceiptSerializer
+
