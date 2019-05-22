@@ -9,3 +9,4 @@ requests-mock==1.5.2
 django-cors-headers
 psycopg2-binary
 flake8
+Pillow
