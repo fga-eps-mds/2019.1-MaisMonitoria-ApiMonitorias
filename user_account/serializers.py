@@ -16,4 +16,4 @@ class UserAccountSerializer(serializers.ModelSerializer):
         model = UserAccount
         fields = ['user_account_id', 'name', 'email', 'registration_date',
                   'description', 'course', 'account_state', 'photo',
-                  'monitoring','monitoring_history']
+                  'monitoring']
