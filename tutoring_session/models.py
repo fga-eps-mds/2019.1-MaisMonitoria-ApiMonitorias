@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 from django.db import models
-from user_account.models import UserAccount
 
 
 class TutoringSession(models.Model):
@@ -11,4 +10,8 @@ class TutoringSession(models.Model):
     description = models.CharField(max_length=500, default="")
     status_tutoring_session = models.BooleanField(default=True)
     create_date = models.DateTimeField(auto_now_add=True)
+    likes = models.ManyToManyField("like.Like", blank=True, related_name='likes')
+    total_likes = models.IntegerField(default=0)
     
+
+

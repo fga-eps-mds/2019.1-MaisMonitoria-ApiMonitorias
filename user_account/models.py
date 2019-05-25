@@ -23,4 +23,5 @@ class UserAccount(models.Model):
     description = models.CharField(max_length=500, default="")
     registration_date = models.DateTimeField(auto_now_add=True)
     account_state = models.BooleanField(default=True)
+    liked_tutoring_sessions = models.ManyToManyField("like.Like", blank=True, related_name='liked_tutoring_sessions')
 
