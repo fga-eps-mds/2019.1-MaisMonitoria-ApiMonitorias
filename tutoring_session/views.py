@@ -1,12 +1,10 @@
 from .serializers import GetTutoringSessionSerializer
 from .serializers import PostTutoringSessionSerializer
-from tutoring_session.models import TutoringSession
+from .models import TutoringSession
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
-from user_account.models import UserAccount
 from rest_framework import status
 from rest_framework.filters import SearchFilter
-
 
 
 class TutoringSessionViewset(ModelViewSet):
