@@ -23,3 +23,10 @@ class LikeViewSet(ModelViewSet):
         like.tutoring_session.save()
 
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers) 
+
+    def destroy(self, request, *args, **kwargs):
+        like = self.get_object()
+        like.tutoring_session.total_likes -= 1
+        like.tutoring_session.save()
+        self.perform_destroy(like)
+        return Response(status=status.HTTP_204_NO_CONTENT)        
