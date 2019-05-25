@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'tutoring_session',
     'user_account',
+    'like',
 ]
 
 MIDDLEWARE = [

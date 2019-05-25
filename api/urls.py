@@ -8,11 +8,13 @@ from rest_framework import routers
 
 from tutoring_session.views import TutoringSessionViewset
 from user_account.views import UserAccountViewset
+from like.views import LikeViewSet
 
 
 router = routers.DefaultRouter()
 router.register(r'user', UserAccountViewset)
 router.register(r'tutoring', TutoringSessionViewset)
+router.register(r'like', LikeViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),
