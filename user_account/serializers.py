@@ -7,7 +7,7 @@ from like.serializer import GetToUserThatLikeSerializer
 class ShortUserAccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserAccount
-        fields = ['user_account_id', 'name', 'photo']
+        fields = ['user_account_id', 'name', 'telegram', 'photo']
 
 
 class UserAccountSerializer(serializers.ModelSerializer):
@@ -16,6 +16,6 @@ class UserAccountSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = UserAccount
-        fields = ['user_account_id', 'name', 'email', 'registration_date',
+        fields = ['user_account_id', 'name', 'email', 'telegram', 'registration_date',
                   'description', 'course', 'account_state', 'photo',
                   'monitoring', 'liked_tutoring_sessions']

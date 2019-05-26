@@ -1,12 +1,12 @@
 from __future__ import unicode_literals
 from django.db import models
 
-    
 class UserAccount(models.Model):
 
     user_account_id = models.CharField(max_length=30, primary_key=True)
     name = models.CharField(max_length=150)
     email = models.CharField(max_length=250)
+    telegram = models.CharField(max_length=50)
     photo = models.ImageField(upload_to='images', blank=True)
 
     COURSES = (
