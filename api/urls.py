@@ -7,16 +7,14 @@ from django.urls import path
 from rest_framework import routers
 
 from tutoring_session.views import TutoringSessionViewset
-from tutoring_session.views import SolicitationViewset
-from tutoring_session.views import ReceiptViewset
 from user_account.views import UserAccountViewset
+from like.views import LikeViewSet
 
 
 router = routers.DefaultRouter()
 router.register(r'user', UserAccountViewset)
 router.register(r'tutoring', TutoringSessionViewset)
-router.register(r'solicitation', SolicitationViewset)
-router.register(r'receipt', ReceiptViewset)
+router.register(r'like', LikeViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

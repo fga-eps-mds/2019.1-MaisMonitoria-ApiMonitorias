@@ -1,16 +1,10 @@
-from .serializers import GetTutoringSessionSerializer, SolicitationSerializer
-from .serializers import ReceiptSerializer, PostTutoringSessionSerializer
-from tutoring_session.models import TutoringSession, Solicitation, Receipt
+from .serializers import GetTutoringSessionSerializer
+from .serializers import PostTutoringSessionSerializer
+from .models import TutoringSession
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
-from user_account.models import UserAccount
 from rest_framework import status
 from rest_framework.filters import SearchFilter
-
-
-class SolicitationViewset(ModelViewSet):
-    queryset = Solicitation.objects.all()
-    serializer_class = SolicitationSerializer
 
 
 class TutoringSessionViewset(ModelViewSet):
@@ -31,7 +25,4 @@ class TutoringSessionViewset(ModelViewSet):
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
 
 
-class ReceiptViewset(ModelViewSet):
-    queryset = Receipt.objects.all()
-    serializer_class = ReceiptSerializer
 
