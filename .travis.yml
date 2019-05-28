@@ -27,7 +27,7 @@ jobs:
       script:
         - make build
         - docker network create api-backend
-        - make run-d
+        - make run
         - make run-tests
         - make cov-tests
         # - docker-compose exec api_monitoria flake8
