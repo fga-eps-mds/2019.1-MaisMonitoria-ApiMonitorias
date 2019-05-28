@@ -8,7 +8,7 @@ from rest_framework.filters import SearchFilter
 
 
 class TutoringSessionViewset(ModelViewSet):
-    queryset = TutoringSession.objects.all()
+    queryset = TutoringSession.objects.all().order_by('-create_date')
     serializer_class = GetTutoringSessionSerializer
     filter_backends = (SearchFilter,)
     search_fields = ('name', 'subject','description')
