@@ -36,6 +36,9 @@ jobs:
     - stage: "Style sheet"
       name: "Style sheet"
       script:
+        - make build
+        - docker network create api-backend
+        - make run-d
         - docker-compose exec api_monitoria flake8
     - stage: "Deploy image homolog"
       if: branch = develop
