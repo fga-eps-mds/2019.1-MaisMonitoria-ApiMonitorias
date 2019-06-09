@@ -10,6 +10,7 @@ stages:
   - Unit test
   - Deploy image homolog
   - Deploy image prodution
+  - Upgrade service
   
 notifications:
   slack: hora-da-hora:0nFQxr2PykmKhNkJ78xYJMOP
@@ -38,6 +39,10 @@ jobs:
     - stage: "Deploy image prodution"
       if: branch = master
       script: bash ./scripts/deploy_prod.sh
+    - stage: "Upgrade service"
+      name: "Upgrade service"
+      if: branch = develop
+      script: python ./scripts/upgrade.py
     
 after_success:
   - docker-compose down
