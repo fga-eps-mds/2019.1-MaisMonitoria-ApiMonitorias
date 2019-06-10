@@ -31,15 +31,14 @@ class GetTutoringSessionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TutoringSession
-        fields = ['id_tutoring_session', 'monitor', 'name', 
+        fields = ['id_tutoring_session', 'monitor', 'name',
                   'subject', 'description', 'status_tutoring_session',
-                  'create_date', 'likes', 'total_likes']    
-                  
+                  'create_date', 'likes', 'total_likes']
+
 
 class GetToUserThatLikeSerializer(serializers.ModelSerializer):
-    tutoring_session = GetTutoringSessionSerializer(many=False, read_only=True) 
+    tutoring_session = GetTutoringSessionSerializer(many=False, read_only=True)
 
     class Meta:
         model = Like
         fields = ['id_like', 'tutoring_session', 'create_date']
-
