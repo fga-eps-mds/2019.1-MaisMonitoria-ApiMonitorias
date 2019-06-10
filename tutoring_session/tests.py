@@ -1,7 +1,5 @@
-from django.test import TestCase
 from rest_framework import status
 from rest_framework.test import APITestCase
-from .views import TutoringSessionViewset
 from user_account.models import UserAccount
 from .models import TutoringSession
 
@@ -12,15 +10,14 @@ class TutoringSessionViewsetTests(APITestCase):
             'monitor': '211297',
             'name': 'encapsulamento',
             'subject': 'Orientação a Objetos',
-            
         }
 
         self.invalid_payload = {
-            'name': ''            
+            'name': ''
         }
-       
+
     def test_create_valid_tutoring(self):
-        user = UserAccount(name='moacir', user_account_id="211297", 
+        user = UserAccount(name='moacir', user_account_id="211297",
                            email='moacir@moacir', course='AERO')
         user.save()
         url = '/tutoring/'

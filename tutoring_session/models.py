@@ -4,7 +4,8 @@ from django.db import models
 
 class TutoringSession(models.Model):
     id_tutoring_session = models.AutoField(primary_key=True)
-    monitor= models.ForeignKey("user_account.UserAccount", on_delete=models.CASCADE, related_name='monitor')
+    monitor = models.ForeignKey("user_account.UserAccount",
+                                on_delete=models.CASCADE, related_name='monitor')
     name = models.CharField(max_length=150)
     subject = models.CharField(max_length=200)
     description = models.CharField(max_length=500, default="")
@@ -12,6 +13,3 @@ class TutoringSession(models.Model):
     create_date = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField("like.Like", blank=True, related_name='likes')
     total_likes = models.IntegerField(default=0)
-    
-
-
