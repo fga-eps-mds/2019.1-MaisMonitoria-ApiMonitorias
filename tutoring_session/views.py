@@ -25,9 +25,6 @@ class TutoringSessionViewset(ModelViewSet):
         headers = self.get_success_headers(serializer.data)
 
         tutoring_session = TutoringSession.objects.latest('create_date')
-        tutoring_session.monitor.monitoring.add(tutoring_session)        
+        tutoring_session.monitor.monitoring.add(tutoring_session)
 
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-
-
-

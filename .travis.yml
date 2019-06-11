@@ -8,6 +8,7 @@ env:
 
 stages:
   - Unit test
+  - Style sheet
   - Deploy image homolog
   - Deploy image prodution
   - Upgrade service
@@ -31,8 +32,14 @@ jobs:
         - make run-d
         - make run-tests
         - make cov-tests
-        # - docker-compose exec api_monitoria flake8
         - docker-compose exec api_monitoria codecov -t ${CODECOV_TOKEN}
+    - stage: "Style sheet"
+      name: "Style sheet"
+      script:
+        - make build
+        - docker network create api-backend
+        - make run-d
+        - docker-compose exec api_monitoria flake8
     - stage: "Deploy image homolog"
       if: branch = develop
       script: bash ./scripts/deploy_homolog.sh

@@ -13,8 +13,8 @@ class ShortTutoringSessionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TutoringSession
-        fields = ['id_tutoring_session', 'name', 'subject' ,
-                  'description', 'status_tutoring_session', 
+        fields = ['id_tutoring_session', 'name', 'subject',
+                  'description', 'status_tutoring_session',
                   'likes', 'total_likes', 'create_date']
 
 
@@ -22,7 +22,7 @@ class PostTutoringSessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = TutoringSession
         fields = ['id_tutoring_session', 'monitor', 'name',
-                  'subject', 'description', 'create_date']    
+                  'subject', 'description', 'create_date']
 
 
 class GetTutoringSessionSerializer(serializers.ModelSerializer):
@@ -31,9 +31,6 @@ class GetTutoringSessionSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = TutoringSession
-        fields = ['id_tutoring_session', 'monitor', 'name', 
+        fields = ['id_tutoring_session', 'monitor', 'name',
                   'subject', 'description', 'status_tutoring_session',
-                  'create_date', 'likes', 'total_likes']    
-
-
-
+                  'create_date', 'likes', 'total_likes']
