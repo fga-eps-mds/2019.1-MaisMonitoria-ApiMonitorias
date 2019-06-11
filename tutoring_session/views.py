@@ -5,6 +5,11 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.filters import SearchFilter
+from rest_framework.pagination import PageNumberPagination
+
+
+class LargeResultsSetPagination(PageNumberPagination):
+    page_size = 20
 
 
 class TutoringSessionViewset(ModelViewSet):
@@ -12,6 +17,7 @@ class TutoringSessionViewset(ModelViewSet):
     serializer_class = GetTutoringSessionSerializer
     filter_backends = (SearchFilter,)
     search_fields = ('name', 'subject', 'description')
+    pagination_class = LargeResultsSetPagination
 
     def create(self, request):
         serializer = PostTutoringSessionSerializer(data=request.data)
