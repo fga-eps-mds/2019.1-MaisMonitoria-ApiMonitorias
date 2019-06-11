@@ -7,15 +7,16 @@ from rest_framework import status
 from rest_framework.filters import SearchFilter
 from rest_framework.pagination import PageNumberPagination
 
+
 class LargeResultsSetPagination(PageNumberPagination):
     page_size = 20
-    
+
 
 class TutoringSessionViewset(ModelViewSet):
     queryset = TutoringSession.objects.all().order_by('-create_date')
     serializer_class = GetTutoringSessionSerializer
     filter_backends = (SearchFilter,)
-    search_fields = ('name', 'subject','description')
+    search_fields = ('name', 'subject', 'description')
     pagination_class = LargeResultsSetPagination
 
     def create(self, request):
