@@ -8,7 +8,7 @@ from rest_framework.filters import SearchFilter
 from rest_framework.pagination import PageNumberPagination
 
 class LargeResultsSetPagination(PageNumberPagination):
-    page_size = 50
+    page_size = 20
     
 
 class TutoringSessionViewset(ModelViewSet):
