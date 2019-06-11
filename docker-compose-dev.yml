@@ -36,8 +36,6 @@ services:
   api_gateway:
     container_name: api-gateway
     image: maismonitoria/api_gateway:homolog
-    volumes:
-      - .:/code
     ports:
       - "8000:8000"
     networks:
