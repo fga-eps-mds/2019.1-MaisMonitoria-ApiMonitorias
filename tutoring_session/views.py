@@ -11,7 +11,7 @@ class TutoringSessionViewset(ModelViewSet):
     queryset = TutoringSession.objects.all().order_by('-create_date')
     serializer_class = GetTutoringSessionSerializer
     filter_backends = (SearchFilter,)
-    search_fields = ('name', 'subject','description')
+    search_fields = ('name', 'subject', 'description')
 
     def create(self, request):
         serializer = PostTutoringSessionSerializer(data=request.data)
@@ -20,9 +20,6 @@ class TutoringSessionViewset(ModelViewSet):
         headers = self.get_success_headers(serializer.data)
 
         tutoring_session = TutoringSession.objects.latest('create_date')
-        tutoring_session.monitor.monitoring.add(tutoring_session)        
+        tutoring_session.monitor.monitoring.add(tutoring_session)
 
         return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
-
-
-

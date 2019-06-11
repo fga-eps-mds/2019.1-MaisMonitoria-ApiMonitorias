@@ -1,11 +1,13 @@
 
-<p align= "center"><img src="https://imgur.com/6foNNzk.png"></p>
+<p align="center"><img src="https://imgur.com/6foNNzk.png"></p>
 
-<p align= "center">
+<p align="center">
 <a><img src="https://travis-ci.org/fga-eps-mds/2019.1-MaisMonitoria-ApiMonitorias.svg?branch=develop"></a>
 <a><img src="https://codecov.io/gh/fga-eps-mds/2019.1-MaisMonitoria-ApiMonitorias/branch/develop/graph/badge.svg"></a>
 <a><img src="https://img.shields.io/badge/license-GLP--3.0-red.svg"></a>
+<a><img src="https://api.codeclimate.com/v1/badges/0b0956674000b10eb598/maintainability"></a>
 </p>
+
 <h1 align="center"> +Monitoria </h1>
 <p align="center"> Uma aplicação para integrar alunos que desejam aprender, e os que desejam ensinar.</p>
 
