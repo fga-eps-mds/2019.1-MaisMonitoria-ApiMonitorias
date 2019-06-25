@@ -1,14 +1,21 @@
 from rest_framework import serializers
 from .models import UserAccount
-from .models import InterestArea
+from tutoring_session.serializers import ShortTutoringSessionSerializer
+from like.serializer import GetToUserThatLikeSerializer
 
-class UserAccountSerializer(serializers.HyperlinkedModelSerializer):
+
+class ShortUserAccountSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserAccount
-        fields = ['user_account_id', 'name', 'email', 'registration_date',
-                  'description', 'course', 'account_state', 'photo_url','interest_areas','monitoring','monitoring_history']
+        fields = ['user_account_id', 'name', 'telegram', 'photo']
 
-class InterestAreaSerializer(serializers.HyperlinkedModelSerializer):
+
+class UserAccountSerializer(serializers.ModelSerializer):
+    monitoring = ShortTutoringSessionSerializer(many=True, read_only=True)
+    liked_tutoring_sessions = GetToUserThatLikeSerializer(many=True, read_only=True)
+
     class Meta:
-        model = InterestArea
-        fields = ['id_interest_area','name']
+        model = UserAccount
+        fields = ['user_account_id', 'name', 'email', 'telegram', 'registration_date',
+                  'description', 'course', 'account_state', 'photo',
+                  'monitoring', 'liked_tutoring_sessions']
