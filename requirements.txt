@@ -1,5 +1,5 @@
 Django==2.2
-djangorestframework==3.9.2
+djangorestframework==3.11.2
 pytest==4.4.0
 pytest-cov==2.6.1
 codecov
